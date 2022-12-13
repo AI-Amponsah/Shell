@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 	int  chars_read;
 /**
   void variables */
-	(void)argc, (void)argv;
+	(void)argc;
 
 	/**
 	  creating an infinite loop */
@@ -40,8 +40,6 @@ int main(int argc, char *argv[])
 	{
 		printf("\n");
 		return (-1);
-	}
-	printf("%s\n", lineptr);
 	}
 	 cpy_lineptr = malloc(sizeof(char)*chars_read);
 	 if (cpy_lineptr == NULL)
@@ -71,9 +69,10 @@ int main(int argc, char *argv[])
 	}
 	argv[i] = NULL;
 
-	for 
+	printf("%s\n", lineptr);
 	free(lineptr);
 	free(cpy_lineptr);
 	free(argv);
+	}
 	return (0);
 }
