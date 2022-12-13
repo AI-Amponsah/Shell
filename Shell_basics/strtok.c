@@ -1,30 +1,31 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-
-
-int main(void)
+int main(int ac , char **av)
 {
-	int i = 0;
-	int j;
-	char string[] = "Hello, my name is Isaac Amponsah";
+	int i, char_read;
 	char *delim = " ";
-	char *token[30];
+	char *token;
+	char *command;
+	size_t n;
 
-	token[0] = strtok(string, delim);
-	i++;
+	(void)ac;
 
-	while ( token[i] != NULL)
+	printf(":");
+	 char_read = getline(&command, &n, stdin);
+	 av = malloc(sizeof(char)*char_read);
+
+	token = strtok(command, delim);
+	for (i = 0;  token != NULL; i++)
 	{
-		token[i] = strtok(NULL, delim);
-		i++;
+		av[i] = malloc(sizeof(char)*strlen(token));
+		strcpy(av[i], token);
+		printf("%s\n",token);
+		token = strtok(NULL, delim);
 	}
-	j = 0;
-	for (j = 0; token[j] != NULL; j++)
-	{
-		printf("%s\n", token[j]);
-	}
-
+	free(av);
+	free(command);
 
 	return (0);
 }
